@@ -9,8 +9,8 @@ Este conjunto de dados fornece informações abrangentes sobre os indicadores de
 
 ## Indentificação das colunas:
 Os nomes das colunas estavam muito errados, então ajustei para que ficassem mais fácil de entender e fui atras do significado de cada uma:
-Name -> name: Identificação da paciente
-Age -> idade: Idade da paciente
+1. Name -> name: Identificação da paciente
+2. Age -> idade: Idade da paciente
 Gravida -> pregnancy: Essa coluna se trata de que gravidez a paciente está, primeira, segunda,...
 Ti Ti Tika -> Pelo nome não é possivel identificar e não consegui identificar os dados, inicialmente achei que se tratav do trimestre da gestação mas não bate com a procima coluna, será desconsiderada
 গর্ভকাল -> weeks: (Traduzido do Bengali ) Semanas de gestação
