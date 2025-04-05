@@ -1,6 +1,6 @@
 # MVP-2-Analise-Gravidez-de-Alto-Risco
 
-##Objetivo da Analise
+## Objetivo da Analise
 
 Identificar atraves do dataset maternal_health quais são os principais fatores que estão relacionados a uma grávidez de alto risco, utilizando para embasamento as seguintes perguntas de negócio:
 
@@ -63,7 +63,7 @@ Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei pa
 17. HRsAG -> hrsag: Detecta a presença de anticorpos contra a Hepatit B
 18. ঝুকিপূর্ণ গর্ভ -> high_risk_pregnancy: (Traduzido do Bengali) Identifica qual o risco da gravidez, o que determina a quantidade de cuidados que serão necessários
 
-## Codigos Utilizados
+## Tratamento dos Dados
 
 ### ETL
 
@@ -144,6 +144,7 @@ df_maternal_health = df_maternal_health\
 Baixa (1): Sistólica < 90 ou Diastólica < 60
 Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
 Alta (3): Sistólica > 120 ou Diastólica > 80
+Fonte: American Heart Association (AHA) e da Organização Mundial da Saúde (OMS).
 
 ## Modelagem
 
@@ -180,5 +181,17 @@ df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_move
 #dim_pregnancy
 df_dim_baby = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
 
-## Códigos para criação de métricas
+## Qualidade dos dados
 
+A base de dados escolhida já estava devidamente curada e tratada. Além disso, realizei transformações para eliminar valores nulos e padronizar as informações, garantindo que fosse possível a criação de métricas confiáveis.
+No entanto, um problema identificado é que a base apresenta uma falta de diversidade nos dados. Por exemplo, nenhuma das pacientes apresenta histórico de pressão alta, o que é amplamente reconhecido na comunidade médica como um fator que aumenta o risco durante a gravidez, especialmente no desenvolvimento de pré-eclâmpsia. Fonte: American Heart Association (AHA) e Organização Mundial da Saúde (OMS).
+
+## Respondendo as perguntas
+
+
+
+## Autoavalização
+
+A escolha desta base de dados se deu pelo fato de eu estar grávida de gêmeos, o que é considerado uma gravidez de risco. No entanto, infelizmente, não encontrei nenhuma base com informações específicas sobre gravidez gemelar, mas encontrei esta, que achei interessante.
+O meu objetivo principal era identificar quais métricas uma gestante deve monitorar para se preparar adequadamente para uma possível gravidez de risco. Embora uma gravidez de risco habitual possa ser tranquila, é importante destacar que uma gravidez com risco elevado exige uma maior assistência e apoio especializado.
+Acredito que essa base, por si só, não foi suficiente para atingir esse objetivo, principalmente devido à falta de dados mais diversificados, como mencionei anteriormente.
