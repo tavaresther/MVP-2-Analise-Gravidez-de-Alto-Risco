@@ -63,7 +63,7 @@ Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei pa
 17. HRsAG -> hrsag: Detecta a presença de anticorpos contra a Hepatit B
 18. ঝুকিপূর্ণ গর্ভ -> high_risk_pregnancy: (Traduzido do Bengali) Identifica qual o risco da gravidez, o que determina a quantidade de cuidados que serão necessários
 
-## Tratamento da Base
+## Codigos Utilizados
 
 ### ETL
 
@@ -144,3 +144,41 @@ df_maternal_health = df_maternal_health\
 Baixa (1): Sistólica < 90 ou Diastólica < 60
 Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
 Alta (3): Sistólica > 120 ou Diastólica > 80
+
+## Modelagem
+
+### Criando os id
+#id_pregnant
+window_spec_fato = Window.orderBy("name")
+df_maternal_health = df_maternal_health\
+    .withColumn("id_pregnant", row_number().over(window_spec_fato))
+
+#id_exames
+window_spec_dim_pregnant = Window.orderBy("blood_pressure")
+df_maternal_health = df_maternal_health\
+    .withColumn("id_exames", row_number().over(window_spec_dim_pregnant))
+
+#id_baby
+window_spec_dim_exames = Window.orderBy("fetal_position")
+df_maternal_health = df_maternal_health\
+    .withColumn("id_baby", row_number().over(window_spec_dim_exames))
+
+#id_pregnancy
+window_spec_dim_baby = Window.orderBy("fetal_position")
+df_maternal_health = df_maternal_health\
+    .withColumn("id_pregnancy", row_number().over(window_spec_dim_baby))
+
+### Criando as bases para o modelo Estrela
+#fato_maternal_health
+df_fato_maternal_health = df_maternal_health.select("id_pregnant", "id_exames", "id_baby", "id_pregnancy")
+#dim_pregnant
+df_dim_pregnant = df_maternal_health.select("id_pregnant", "name", "age", "weight_kg", "height_cm")
+#dim_exames
+df_dim_exames = df_maternal_health.select("id_exames", "blood_pressure", "anemia", "jaundice", "urine_test_albumin", "urine_test_sugar", "vdrl", "hrsag")
+#dim_baby
+df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_movements", "fetal_heartbeat")
+#dim_pregnancy
+df_dim_baby = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
+
+## Códigos para criação de métricas
+
