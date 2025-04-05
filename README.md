@@ -63,3 +63,84 @@ Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei pa
 17. HRsAG -> hrsag: Detecta a presença de anticorpos contra a Hepatit B
 18. ঝুকিপূর্ণ গর্ভ -> high_risk_pregnancy: (Traduzido do Bengali) Identifica qual o risco da gravidez, o que determina a quantidade de cuidados que serão necessários
 
+##Tratamento da Base
+
+###ETL
+
+####Carregando a Base
+df_maternal_health = spark.sql("SELECT * FROM spark_catalog.default.maternal_health")
+
+####Transformando as colunas
+Essas transformações são necessárias para ser possivel trabalhar métricas com soma, média, entre outras.
+df_maternal_health = df_maternal_health\
+    .withColumn("pregnancy", col("pregnancy").substr(1, 1).cast("int"))\
+    .withColumn("weeks", col("weeks").substr(1, 1).cast("int"))\
+    .withColumn("weight_kg", regexp_replace(col("weight_kg"), "kg", "").cast("int"))\
+    .withColumn("height_ft", regexp_replace(col("height_ft"), "''", ""))\
+    .withColumn("height_cm", 
+                   format_number(
+                       bround(
+                           (col("height_ft").substr(1, 1).cast("float") * 30.48) + 
+                           (col("height_ft").substr(3, 2).cast("float") * 2.54), 
+                           2
+                       ).cast("double"), 2))\
+    .withColumn("systolic", split(col("blood_pressure"), "/").getItem(0).cast("int"))\
+    .withColumn("diastolic", split(col("blood_pressure"), "/").getItem(1).cast("int"))\
+    .withColumn("blood_pressure",
+            when((col("systolic") < 90) | (col("diastolic") < 60), "1")
+            .when(((col("systolic") >= 90) & (col("systolic") <= 120)) & ((col("diastolic") >= 60) & (col("diastolic") <= 80)), "2")
+            .otherwise("3")
+            .cast("int"))\
+    .withColumn("blood_pressure",
+            when((col("systolic") < 90) | (col("diastolic") < 60), "1")
+            .when(((col("systolic") >= 90) & (col("systolic") <= 120)) & ((col("diastolic") >= 60) & (col("diastolic") <= 80)), "2")
+            .otherwise("3")
+            .cast("int"))\
+    .withColumn("anemia",
+                when((col("anemia") == 'Minimal'), "1")
+                .when((col("anemia") == 'Medium'), "2")
+                .when((col("anemia") == 'Higher'), "3")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("jaundice",
+                when((col("jaundice") == 'Minimal'), "1")
+                .when((col("jaundice") == 'Medium'), "2")
+                .when((col("jaundice") == 'Higher'), "3")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("fetal_position",
+                when((col("fetal_position") == 'Abnormal'), "1")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("fetal_movements",
+                when((col("fetal_movements") == 'Abnormal'), "1")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("fetal_heartbeat", regexp_replace(col("fetal_heartbeat"), "m", "").cast("int"))\
+    .withColumn("urine_test_albumin",
+                when((col("urine_test_albumin") == 'Minimal'), "1")
+                .when((col("urine_test_albumin") == 'Medium'), "2")
+                .when((col("urine_test_albumin") == 'Higher'), "3")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("urine_test_sugar",
+                when((col("urine_test_sugar") == 'Yes'), "1")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("vdrl",
+                when((col("vdrl") == 'Positive'), "1")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("hrsag",
+                when((col("hrsag") == 'Positive'), "1")
+                .otherwise("0")
+                .cast("int"))\
+    .withColumn("high_risk_pregnancy",
+                when((col("high_risk_pregnancy") == 'Yes'), "1")
+                .otherwise("0")
+                .cast("int"))
+
+*Tratamento da blood_pressure 
+Baixa (1): Sistólica < 90 ou Diastólica < 60
+Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
+Alta (3): Sistólica > 120 ou Diastólica > 80
