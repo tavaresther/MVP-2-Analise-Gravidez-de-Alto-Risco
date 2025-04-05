@@ -63,14 +63,14 @@ Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei pa
 17. HRsAG -> hrsag: Detecta a presença de anticorpos contra a Hepatit B
 18. ঝুকিপূর্ণ গর্ভ -> high_risk_pregnancy: (Traduzido do Bengali) Identifica qual o risco da gravidez, o que determina a quantidade de cuidados que serão necessários
 
-##Tratamento da Base
+## Tratamento da Base
 
-###ETL
+### ETL
 
-####Carregando a Base
+#### Carregando a Base
 df_maternal_health = spark.sql("SELECT * FROM spark_catalog.default.maternal_health")
 
-####Transformando as colunas
+#### Transformando as colunas
 Essas transformações são necessárias para ser possivel trabalhar métricas com soma, média, entre outras.
 df_maternal_health = df_maternal_health\
     .withColumn("pregnancy", col("pregnancy").substr(1, 1).cast("int"))\
