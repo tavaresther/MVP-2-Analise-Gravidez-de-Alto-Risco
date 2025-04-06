@@ -190,7 +190,9 @@ class_age |	risk_high | risk_normal
 
 Com isso, podemos definir que a idade não é um fator predominantem para uma gravidez de risco, sendo um pouco mais elevado o % de gravidez de risco em pascientes com mais de 31 anos.
 
-2. O IMC está relacionada a gestações de alto risco?
+2. A quantidade de vezes que a paciente ficou grávida está relacionada a gestações de alto risco?
+
+3. O IMC está relacionada a gestações de alto risco?
 Para responder essa pergunta vamos cálcular o IMC criando uma classe e depois ver o % de pacientes por classe:
 
 df_imc_risk = df_maternal_health\
@@ -212,6 +214,41 @@ class_imc	   | risk_high | risk_normal
 Abaixo do peso | 0.66733   | 0.3326
 
 A base utilizada não contempla todos os tipos de IMC, então não é possivel atraves dela definir se o IMC tem relação com o risco da gravidez
+
+
+4. Existe uma correlação entre a pressão arterial elevada (hipertensão) e a gravidez de alto risco?
+
+A tabela gerada foi a seguinte:
+
+5. Como o histórico de anemia impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+6. Como o histórico de jaundice impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+7. A posição fetal anormal é mais frequentemente em gravidez de alto risco?
+
+A tabela gerada foi a seguinte:
+
+8. Como o histórico de urine_test_albumin impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+9. Como o histórico de urine_test_sugar impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
+
+A tabela gerada foi a seguinte:
+
+
 
 ## Qualidade dos dados
 
