@@ -192,6 +192,12 @@ Com isso, podemos definir que a idade não é um fator predominantem para uma gr
 
 2. A quantidade de vezes que a paciente ficou grávida está relacionada a gestações de alto risco?
 
+df_pregnancy_risk = df_maternal_health.groupBy("pregnancy").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+
+A tabela gerada foi a seguinte:
+
 3. O IMC está relacionada a gestações de alto risco?
 Para responder essa pergunta vamos cálcular o IMC criando uma classe e depois ver o % de pacientes por classe:
 
@@ -218,34 +224,66 @@ A base utilizada não contempla todos os tipos de IMC, então não é possivel a
 
 4. Existe uma correlação entre a pressão arterial elevada (hipertensão) e a gravidez de alto risco?
 
+df_pressure_risk = df_maternal_health.groupBy("blood_pressure").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 5. Como o histórico de anemia impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_anemia_risk = df_maternal_health.groupBy("anemia").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 6. Como o histórico de jaundice impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_jaundice_risk = df_maternal_health.groupBy("jaundice").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 7. A posição fetal anormal é mais frequentemente em gravidez de alto risco?
 
+df_fetal_risk = df_maternal_health.groupBy("fetal_position").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 8. Como o histórico de urine_test_albumin impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_albumin_risk = df_maternal_health.groupBy("urine_test_albumin").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 9. Como o histórico de urine_test_sugar impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_sugar_risk = df_maternal_health.groupBy("urine_test_sugar").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_vdrl_risk = df_maternal_health.groupBy("vdrl").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
+df_hrsag_risk = df_maternal_health.groupBy("hrsag").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
+    
 A tabela gerada foi a seguinte:
 
 
