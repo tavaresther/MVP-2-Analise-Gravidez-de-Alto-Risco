@@ -188,7 +188,7 @@ class_age |	risk_high | risk_normal
 26 - 30   | 0.6628	  | 0.3371
 31 - 50   | 0.6923	  | 0.3076
 
-Com isso, podemos definir que a idade não é um fator predominantem para uma gravidez de risco, sendo um pouco mais elevado o % de gravidez de risco em pascientes com mais de 31 anos.
+Podemos avaliar que a idade não é um fator predominantem para uma gravidez de risco, sendo um pouco mais frequente em pascientes com mais de 31 anos.
 
 2. A quantidade de vezes que a paciente ficou grávida está relacionada a gestações de alto risco?
 
@@ -198,10 +198,12 @@ df_pregnancy_risk = df_maternal_health.groupBy("pregnancy").agg(
 
 A tabela gerada foi a seguinte:
 
-pregnancy	risk_high	risk_normal
-1	0.6666666666666666	0.3333333333333333
-3	0.6	0.4
-2	0.6730769230769231	0.3269230769230769
+pregnancy |	risk_high | risk_normal
+1         |	0.6666    |	0.3333
+3         |	0.6       | 0.4
+2         |	0.6730    |	0.3269
+
+Podemos avaliar que a quantidade de gestações não é um fator predominantem para uma gravidez de risco.
 
 3. O IMC está relacionada a gestações de alto risco?
 Para responder essa pergunta vamos cálcular o IMC criando uma classe e depois ver o % de pacientes por classe:
