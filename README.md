@@ -4,32 +4,33 @@
 
 Identificar atraves do dataset maternal_health quais são os principais fatores que estão relacionados a uma grávidez de alto risco, utilizando para embasamento as seguintes perguntas de negócio:
 
-1. Quais características demográficas (idade, peso, altura) estão mais associadas a gestações de alto risco?
-2. Como o histórico de anemia ou icterícia impacta a probabilidade de uma gravidez ser considerada de alto risco?
-3. Existe uma correlação entre a pressão arterial elevada (hipertensão) e a gravidez de alto risco?
-4. A presença de resultados positivos no teste de VDRL está associada a uma maior probabilidade de uma gravidez de alto risco?
-5. Quais posições fetais mais frequentemente resultam em gravidez de alto risco?
-6. Como a quantidade de movimentos fetais e os batimentos cardíacos fetais influenciam o risco da gravidez?
-7. Como a idade influencia a classificação de risco durante a gravidez? Existem faixas etárias específicas que têm maior risco de complicações?
-8. Gravidez de alto risco é mais comum em mulheres jovens ou mais velhas? Ou ambas as faixas etárias apresentam maior risco por diferentes razões?
-9. Qual a relação entre o peso da gestante e a classificação de risco? Mulheres com excesso de peso têm mais chances de ter uma gravidez de alto risco?
-10. O índice de massa corporal (IMC), que pode ser derivado do peso e altura, tem correlação com a classificação de risco?
-11. Quais são as taxas de gravidez de alto risco entre as mulheres com resultados positivos nos testes de albumina ou açúcar na urina?
-12. Qual é a incidência de gravidez de alto risco em mulheres com resultados anormais nos testes de urina (albumina e açúcar)?
-13. Como os testes de sangue (VDLR, HRSAG) afetam a classificação de risco durante a gravidez?
-14. A posição fetal tem algum impacto na classificação de risco para a mãe?
-15. Qual é o impacto dos batimentos cardíacos fetais sobre o risco da gravidez?
-16. Movimentos fetais reduzidos estão correlacionados com um aumento no risco para a mãe e/ou bebê?
-17. Qual é a prevalência de anemia entre mulheres com gravidez de alto risco?
-18. A presença de icterícia durante a gravidez está associada ao risco aumentado de complicações durante o parto?
-19. Mulheres com histórico de hipertensão ou diabetes têm maior probabilidade de ter uma gravidez de alto risco?
-20. Como a pressão arterial alta (hipertensão) influencia as taxas de complicações nas gestações de alto risco?
-21. Como a taxa de gravidezes de alto risco muda ao longo dos trimestres, especialmente considerando a evolução das condições de saúde?
-22. Quais são as tendências em termos de gestantes com alto risco baseadas nas características demográficas?
-23. Mulheres com peso elevado ou histórico de anemia apresentam maiores chances de gravidez de alto risco?
-24. Como fatores como idade, peso e histórico médico (anemia, icterícia) podem ser modificados para reduzir o risco durante a gravidez?
-25. Quais intervenções podem ser mais eficazes para mulheres com características específicas (por exemplo, altas taxas de VDRL ou hipertensão) para prevenir complicações na gravidez?
-26. Quais fatores podem ser ajustados para reduzir o risco de uma gravidez de alto risco, como a alimentação, monitoramento da pressão arterial ou controle da glicose?
+1. A idade está relacionada a gestações de alto risco?
+2. O IMC está relacionada a gestações de alto risco?
+3. Como o histórico de anemia ou icterícia impacta a probabilidade de uma gravidez ser considerada de alto risco?
+4. Existe uma correlação entre a pressão arterial elevada (hipertensão) e a gravidez de alto risco?
+5. A presença de resultados positivos no teste de VDRL está associada a uma maior probabilidade de uma gravidez de alto risco?
+6. Quais posições fetais mais frequentemente resultam em gravidez de alto risco?
+7. Como a quantidade de movimentos fetais e os batimentos cardíacos fetais influenciam o risco da gravidez?
+8. Como a idade influencia a classificação de risco durante a gravidez? Existem faixas etárias específicas que têm maior risco de complicações?
+9. Gravidez de alto risco é mais comum em mulheres jovens ou mais velhas? Ou ambas as faixas etárias apresentam maior risco por diferentes razões?
+10. Qual a relação entre o peso da gestante e a classificação de risco? Mulheres com excesso de peso têm mais chances de ter uma gravidez de alto risco?
+11. O índice de massa corporal (IMC), que pode ser derivado do peso e altura, tem correlação com a classificação de risco?
+12. Quais são as taxas de gravidez de alto risco entre as mulheres com resultados positivos nos testes de albumina ou açúcar na urina?
+13. Qual é a incidência de gravidez de alto risco em mulheres com resultados anormais nos testes de urina (albumina e açúcar)?
+14. Como os testes de sangue (VDLR, HRSAG) afetam a classificação de risco durante a gravidez?
+15. A posição fetal tem algum impacto na classificação de risco para a mãe?
+16. Qual é o impacto dos batimentos cardíacos fetais sobre o risco da gravidez?
+17. Movimentos fetais reduzidos estão correlacionados com um aumento no risco para a mãe e/ou bebê?
+18. Qual é a prevalência de anemia entre mulheres com gravidez de alto risco?
+19. A presença de icterícia durante a gravidez está associada ao risco aumentado de complicações durante o parto?
+20. Mulheres com histórico de hipertensão ou diabetes têm maior probabilidade de ter uma gravidez de alto risco?
+21. Como a pressão arterial alta (hipertensão) influencia as taxas de complicações nas gestações de alto risco?
+22. Como a taxa de gravidezes de alto risco muda ao longo dos trimestres, especialmente considerando a evolução das condições de saúde?
+23. Quais são as tendências em termos de gestantes com alto risco baseadas nas características demográficas?
+24. Mulheres com peso elevado ou histórico de anemia apresentam maiores chances de gravidez de alto risco?
+25. Como fatores como idade, peso e histórico médico (anemia, icterícia) podem ser modificados para reduzir o risco durante a gravidez?
+26. Quais intervenções podem ser mais eficazes para mulheres com características específicas (por exemplo, altas taxas de VDRL ou hipertensão) para prevenir complicações na gravidez?
+27. Quais fatores podem ser ajustados para reduzir o risco de uma gravidez de alto risco, como a alimentação, monitoramento da pressão arterial ou controle da glicose?
 
 ## Informações sobre o Dataset
 
@@ -86,11 +87,6 @@ df_maternal_health = df_maternal_health\
                        ).cast("double"), 2))\
     .withColumn("systolic", split(col("blood_pressure"), "/").getItem(0).cast("int"))\
     .withColumn("diastolic", split(col("blood_pressure"), "/").getItem(1).cast("int"))\
-    .withColumn("blood_pressure",
-            when((col("systolic") < 90) | (col("diastolic") < 60), "1")
-            .when(((col("systolic") >= 90) & (col("systolic") <= 120)) & ((col("diastolic") >= 60) & (col("diastolic") <= 80)), "2")
-            .otherwise("3")
-            .cast("int"))\
     .withColumn("blood_pressure",
             when((col("systolic") < 90) | (col("diastolic") < 60), "1")
             .when(((col("systolic") >= 90) & (col("systolic") <= 120)) & ((col("diastolic") >= 60) & (col("diastolic") <= 80)), "2")
@@ -181,14 +177,65 @@ df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_move
 #dim_pregnancy
 df_dim_baby = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
 
+## Respondendo as perguntas
+
+1. A idade está relacionada a gestações de alto risco?
+Para responder essa pergunta vamos criar uma classe para validar a idade e depois ver o % de pacientes por classe:
+
+df_age_risk = df_maternal_health\
+    .withColumn("class_age",
+            when((col("age") < 18), "- 18")
+            .when((col("age") <= 20), "18 - 20")
+            .when((col("age") <= 25), "21 - 25")
+            .when((col("age") <= 30), "26 - 30")
+            .when((col("age") < 50), "31 - 50")
+            .otherwise("+ 50"))\
+
+df_age_risk = df_age_risk.groupBy("class_age").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal")
+)
+
+A tabela gerada foi a seguinte:
+
+class_age |	risk_high | risk_normal
+18 - 20   | 0.6645	  | 0.33540
+21 - 25   | 0.6694	  | 0.3305
+26 - 30   | 0.6628	  | 0.3371
+31 - 50   | 0.6923	  | 0.3076
+
+Com isso, podemos definir que a idade não é um fator predominantem para uma gravidez de risco, sendo um pouco mais elevado o % de gravidez de risco em pascientes com mais de 31 anos.
+
+2. O IMC está relacionada a gestações de alto risco?
+Para responder essa pergunta vamos cálcular o IMC criando uma classe e depois ver o % de pacientes por classe:
+
+df_imc_risk = df_maternal_health\
+    .withColumn("IMC", col("weight_kg") / (col("height_cm") ** 2))\
+    .withColumn("class_imc",
+        when(col("IMC") < 18.5, "Abaixo do peso")
+        .when((col("IMC") >= 18.5) & (col("IMC") < 24.9), "Peso normal")
+        .when((col("IMC") >= 25) & (col("IMC") < 29.9), "Sobrepeso")
+        .when(col("IMC") >= 30, "Obesidade"))
+
+df_imc_risk = df_imc_risk.groupBy("class_imc").agg(
+    avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal")
+)
+
+A tabela gerada foi a seguinte:
+
+class_imc	   | risk_high | risk_normal
+Abaixo do peso | 0.66733   | 0.3326
+
+A base utilizada não contempla todos os tipos de IMC, então não é possivel atraves dela definir se o IMC tem relação com o risco da gravidez
+
 ## Qualidade dos dados
 
 A base de dados escolhida já estava devidamente curada e tratada. Além disso, realizei transformações para eliminar valores nulos e padronizar as informações, garantindo que fosse possível a criação de métricas confiáveis.
-No entanto, um problema identificado é que a base apresenta uma falta de diversidade nos dados. Por exemplo, nenhuma das pacientes apresenta histórico de pressão alta, o que é amplamente reconhecido na comunidade médica como um fator que aumenta o risco durante a gravidez, especialmente no desenvolvimento de pré-eclâmpsia. Fonte: American Heart Association (AHA) e Organização Mundial da Saúde (OMS).
-
-## Respondendo as perguntas
-
-
+No entanto, um problema identificado é que a base apresenta uma falta de diversidade nos dados. Por exemplo:
+- Nenhuma das pacientes apresenta histórico de pressão alta, o que é amplamente reconhecido na comunidade médica como um fator que aumenta o risco durante a gravidez, especialmente no desenvolvimento de pré-eclâmpsia. Fonte: American Heart Association (AHA) e Organização Mundial da Saúde (OMS).
+- Todas as pacientes estão abaixo do peso.
+- 
 
 ## Autoavalização
 
