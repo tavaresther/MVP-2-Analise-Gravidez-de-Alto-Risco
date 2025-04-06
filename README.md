@@ -38,7 +38,7 @@ Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei pa
 7. উচ্চতা -> height_ft: (Traduzido do Bengali) Altura da paciente
 8. রক্ত চাপ -> blood_pressure: (Traduzido do Bengali) Pressão Alrterial
 9. রক্তস্বল্পতা -> anemia: (Traduzido do Bengali) Se não possui anemia(null) ou o nivel da anemia da paciente
-10. জন্ডিস -> jaundice: (Traduzido do Bengali) Conhecida como icterícia, é uma condição médica caracterizada pela coloração amarelada da pele, mucosas e olhos devido ao acúmulo de bilirrubina no organismo. A coluna informa se não possui icterícia(null) ou o nivel da anemia da paciente
+10. জন্ডিস -> jaundice: (Traduzido do Bengali) Conhecida como icterícia, é uma condição médica caracterizada pela coloração amarelada da pele, mucosas e olhos devido ao acúmulo de bilirrubina no organismo. A coluna informa se não possui icterícia(null) ou o nivel da icterícia da paciente
 11. গর্ভস্হ শিশু অবস্থান -> fetal_position: (Traduzido do Bengali) Informa se a posição do feto no utero está normal
 12. গর্ভস্হ শিশু নাড়াচাড়া -> fetal_movements: (Traduzido do Bengali) Informa se os movimentos do feto estão normal
 13. গর্ভস্হ শিশু হৃৎস্পন্দন -> fetal_heartbeat: (Traduzido do Bengali) Informa quantidade de batimentos cardiacos por minuto do feto
@@ -236,11 +236,13 @@ df_pressure_risk = df_maternal_health.groupBy("blood_pressure").agg(
     
 A tabela gerada foi a seguinte:
 
-blood_pressure	risk_high	risk_normal
-1	0.031496062992125984	0.968503937007874
-2	0.7600459242250287	0.2399540757749713
+blood_pressure | risk_high | risk_normal
+1              | 0.03149   | 0.9685
+2              | 0.76004   | 0.2399
 
 Baixa - 1, Normal - 2, Alta - 3
+
+A base utilizada não contempla todos os tipos de pressão, então não é possivel atraves dela definir se o hipertensão tem relação com o risco da gravidez, uma vez que ela não foi contemplada.
 
 5. Como o histórico de anemia impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -250,6 +252,15 @@ df_anemia_risk = df_maternal_health.groupBy("anemia").agg(
     
 A tabela gerada foi a seguinte:
 
+anemia | risk_high | risk_normal
+1      | 0.6612    | 0.3387
+2      | 0.6721    | 0.3278
+0      | 0.6674    | 0.3325
+
+Normal - 0, Minimal - 1, Medium - 2, Higher - 3
+
+Podemos avaliar que a anemia não é um fator predominantem para uma gravidez de risco.
+
 6. Como o histórico de jaundice impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
 df_jaundice_risk = df_maternal_health.groupBy("jaundice").agg(
@@ -258,10 +269,14 @@ df_jaundice_risk = df_maternal_health.groupBy("jaundice").agg(
     
 A tabela gerada foi a seguinte:
 
-anemia	risk_high	risk_normal
-1	0.6612903225806451	0.3387096774193548
-2	0.6721311475409836	0.32786885245901637
-0	0.6674285714285715	0.3325714285714286
+jaundice | risk_high | risk_normal
+1	     | 0.625     | 0.375
+2	     | 0.75      | 0.25
+0	     | 0.6673    | 0.3326
+
+Normal - 0, Minimal - 1, Medium - 2, Higher - 3
+
+Podemos avaliar que a presença acima de média da icteríciapode ser um fator importante para uma gravidez de risco, porém a base não contempla quando o exame apresenta alta presença e com isso não é possivel afirmar.
 
 7. A posição fetal anormal é mais frequentemente em gravidez de alto risco?
 
@@ -271,10 +286,13 @@ df_fetal_risk = df_maternal_health.groupBy("fetal_position").agg(
     
 A tabela gerada foi a seguinte:
 
-jaundice	risk_high	risk_normal
-1	0.625	0.375
-2	0.75	0.25
-0	0.6673427991886409	0.332657200811359
+fetal_position | risk_high | risk_normal
+1	           | 0.6666    | 0.3333
+0	           | 0.6673    | 0.3326
+
+Abnormal  - 1, Normal - 0
+
+Podemos avaliar que a posição fetal anormal não é um fator predominantem para uma gravidez de risco.
 
 8. Como o histórico de urine_test_albumin impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -284,9 +302,13 @@ df_albumin_risk = df_maternal_health.groupBy("urine_test_albumin").agg(
     
 A tabela gerada foi a seguinte:
 
-fetal_position	risk_high	risk_normal
-1	0.6666666666666666	0.3333333333333333
-0	0.6673387096774194	0.3326612903225806
+urine_test_albumin | risk_high | risk_normal
+1                  | 0.6428    | 0.3571
+3                  | 0.6590    | 0.3409
+2                  | 0.6666    | 0.3333
+0                  | 0.6689    | 0.3310
+
+Podemos avaliar que o histórico de urine_test_albumin não é um fator predominantem para uma gravidez de risco.
 
 9. Como o histórico de urine_test_sugar impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -296,11 +318,9 @@ df_sugar_risk = df_maternal_health.groupBy("urine_test_sugar").agg(
     
 A tabela gerada foi a seguinte:
 
-urine_test_albumin	risk_high	risk_normal
-1	0.6428571428571429	0.35714285714285715
-3	0.6590909090909091	0.3409090909090909
-2	0.6666666666666666	0.3333333333333333
-0	0.6689814814814815	0.33101851851851855
+urine_test_sugar | risk_high | risk_normal
+1                | 0.6662    | 0.3337
+0                | 0.6759    | 0.3240
 
 10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -310,9 +330,9 @@ df_vdrl_risk = df_maternal_health.groupBy("vdrl").agg(
     
 A tabela gerada foi a seguinte:
 
-urine_test_sugar	risk_high	risk_normal
-1	0.6662921348314607	0.33370786516853934
-0	0.6759259259259259	0.32407407407407407
+vdrl | risk_high | risk_normal
+1	 | 0.6673	 | 0.3326
+0	 | 0.6673	 | 0.3326
 
 11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -322,9 +342,9 @@ df_hrsag_risk = df_maternal_health.groupBy("hrsag").agg(
     
 A tabela gerada foi a seguinte:
 
-vdrl	risk_high	risk_normal
-1	0.6673346693386774	0.33266533066132264
-0	0.6673346693386774	0.33266533066132264
+hrsag | risk_high | risk_normal
+1     | 1	      | 0
+0     | 0.6265    | 0.3734
 
 ## Qualidade dos dados
 
