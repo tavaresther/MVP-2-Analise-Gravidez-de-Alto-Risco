@@ -5,32 +5,16 @@
 Identificar atraves do dataset maternal_health quais são os principais fatores que estão relacionados a uma grávidez de alto risco, utilizando para embasamento as seguintes perguntas de negócio:
 
 1. A idade está relacionada a gestações de alto risco?
-2. O IMC está relacionada a gestações de alto risco?
-3. Como o histórico de anemia ou icterícia impacta a probabilidade de uma gravidez ser considerada de alto risco?
+2. A quantidade de vezes que a paciente ficou grávida está relacionada a gestações de alto risco?
+3. O IMC está relacionada a gestações de alto risco?
 4. Existe uma correlação entre a pressão arterial elevada (hipertensão) e a gravidez de alto risco?
-5. A presença de resultados positivos no teste de VDRL está associada a uma maior probabilidade de uma gravidez de alto risco?
-6. Quais posições fetais mais frequentemente resultam em gravidez de alto risco?
-7. Como a quantidade de movimentos fetais e os batimentos cardíacos fetais influenciam o risco da gravidez?
-8. Como a idade influencia a classificação de risco durante a gravidez? Existem faixas etárias específicas que têm maior risco de complicações?
-9. Gravidez de alto risco é mais comum em mulheres jovens ou mais velhas? Ou ambas as faixas etárias apresentam maior risco por diferentes razões?
-10. Qual a relação entre o peso da gestante e a classificação de risco? Mulheres com excesso de peso têm mais chances de ter uma gravidez de alto risco?
-11. O índice de massa corporal (IMC), que pode ser derivado do peso e altura, tem correlação com a classificação de risco?
-12. Quais são as taxas de gravidez de alto risco entre as mulheres com resultados positivos nos testes de albumina ou açúcar na urina?
-13. Qual é a incidência de gravidez de alto risco em mulheres com resultados anormais nos testes de urina (albumina e açúcar)?
-14. Como os testes de sangue (VDLR, HRSAG) afetam a classificação de risco durante a gravidez?
-15. A posição fetal tem algum impacto na classificação de risco para a mãe?
-16. Qual é o impacto dos batimentos cardíacos fetais sobre o risco da gravidez?
-17. Movimentos fetais reduzidos estão correlacionados com um aumento no risco para a mãe e/ou bebê?
-18. Qual é a prevalência de anemia entre mulheres com gravidez de alto risco?
-19. A presença de icterícia durante a gravidez está associada ao risco aumentado de complicações durante o parto?
-20. Mulheres com histórico de hipertensão ou diabetes têm maior probabilidade de ter uma gravidez de alto risco?
-21. Como a pressão arterial alta (hipertensão) influencia as taxas de complicações nas gestações de alto risco?
-22. Como a taxa de gravidezes de alto risco muda ao longo dos trimestres, especialmente considerando a evolução das condições de saúde?
-23. Quais são as tendências em termos de gestantes com alto risco baseadas nas características demográficas?
-24. Mulheres com peso elevado ou histórico de anemia apresentam maiores chances de gravidez de alto risco?
-25. Como fatores como idade, peso e histórico médico (anemia, icterícia) podem ser modificados para reduzir o risco durante a gravidez?
-26. Quais intervenções podem ser mais eficazes para mulheres com características específicas (por exemplo, altas taxas de VDRL ou hipertensão) para prevenir complicações na gravidez?
-27. Quais fatores podem ser ajustados para reduzir o risco de uma gravidez de alto risco, como a alimentação, monitoramento da pressão arterial ou controle da glicose?
+5. Como o histórico de anemia impacta a probabilidade de uma gravidez ser considerada de alto risco?
+6. Como o histórico de jaundice impacta a probabilidade de uma gravidez ser considerada de alto risco?
+7. A posição fetal anormal é mais frequentemente em gravidez de alto risco?
+8. Como o histórico de urine_test_albumin impacta a probabilidade de uma gravidez ser considerada de alto risco?
+9. Como o histórico de urine_test_sugar impacta a probabilidade de uma gravidez ser considerada de alto risco?
+10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
+11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
 ## Informações sobre o Dataset
 
