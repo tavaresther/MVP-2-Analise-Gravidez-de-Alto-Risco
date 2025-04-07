@@ -28,7 +28,7 @@ https://www.kaggle.com/datasets/ankurray00/maternal-health-and-high-risk-pregnan
 Este conjunto de dados fornece informações abrangentes sobre os indicadores de saúde materna durante a gravidez, incluindo detalhes como idade, gravídica (número de gestações), peso, altura, pressão arterial, idade gestacional e estado de saúde fetal. Ele também inclui resultados de exames médicos importantes, como anemia, níveis de açúcar no sangue e frequência cardíaca fetal, oferecendo uma visão completa sobre a saúde na gravidez. O conjunto de dados classifica as gestações como de alto risco ou não de alto risco com base em fatores como resultados de exames, pressão arterial e bem-estar fetal. Coletado manualmente a partir de registros médicos, cada entrada foi cuidadosamente revisada e anonimizada para garantir a privacidade e a precisão. Este conjunto de dados serve como um recurso valioso para pesquisas em saúde materna, previsão de risco e resultados da gravidez, apoiando esforços para melhorar o cuidado pré-natal e estratégias de intervenção precoce.
 
 ## Indentificação das colunas:
-Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei para que ficassem mais fácil de entender e fui atras do significado de cada uma:
+Os nomes das colunas estavam um pouco dificeis de identificar, então ajustei para que ficassem mais fácil de entender e traduzi para o portugues:
 1. Name -> name: Identificação da paciente
 2. Age -> idade: Idade da paciente
 3. Gravida -> pregnancy: Essa coluna se trata de que gravidez a paciente está, primeira, segunda,...
@@ -182,17 +182,17 @@ hrsag : Classificação se a pasciente possui hrsag, inteiro, valores esperados 
 
 Descrição das colunas
 id_baby : Criada após a classificação da coluna "fetal_position"
-fetal_position : 
-fetal_movements : 
-fetal_heartbeat : 
+fetal_position : Classificação da posição do feto, inteiro, valores esperados sendo para: Normal - 0, Anormal - 1;
+fetal_movements : Classificação dos movimentos do feto, inteiro, valores esperados sendo para: Normal - 0, Anormal - 1;
+fetal_heartbeat : Valor quantidade de batimento do coração do feto por minuto, inteiro, sem valores mínimos esperados;
 
 #### df_dim_pregnancy = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
 
 Descrição das colunas
 id_pregnancy : Criada após a classificação da coluna "pregnancy"
-pregnancy : 
-weeks : 
-high_risk_pregnancy : 
+pregnancy : Valor da quantidade de gravidez que a paciente teve, inteiro, sem valores mínimos esperados;
+weeks : Valor da quantidade de semanas de gravidez, inteiro, sem valores mínimos esperados;
+high_risk_pregnancy : Classificação se a pasciente possui risco alto, inteiro, valores esperados sendo para: Não - 0, Sim - 1;
 
 ## Respondendo as perguntas
 
@@ -239,6 +239,7 @@ pregnancy |	risk_high | risk_normal
 Podemos avaliar que a quantidade de gestações não é um fator predominantem para uma gravidez de risco.
 
 3. O IMC está relacionada a gestações de alto risco?
+
 Para responder essa pergunta vamos cálcular o IMC criando uma classe e depois ver o % de pacientes por classe:
 
 df_imc_risk = df_maternal_health\
@@ -308,7 +309,7 @@ jaundice | risk_high | risk_normal
 
 Normal - 0, Minimal - 1, Medium - 2, Higher - 3
 
-Podemos avaliar que a presença acima de média da icteríciapode ser um fator importante para uma gravidez de risco, porém a base não contempla quando o exame apresenta alta presença e com isso não é possivel afirmar.
+Podemos avaliar que a presença acima da média de icterícia pode ser um fator importante para uma gravidez de risco, porém a base não contempla quando o exame apresenta alta presença e com isso não é possivel afirmar.
 
 7. A posição fetal anormal é mais frequentemente em gravidez de alto risco?
 
@@ -340,7 +341,7 @@ urine_test_albumin | risk_high | risk_normal
 2                  | 0.6666    | 0.3333
 0                  | 0.6689    | 0.3310
 
-Podemos avaliar que o histórico de urine_test_albumin não é um fator predominantem para uma gravidez de risco.
+Podemos avaliar que o histórico de albumina na urina não é um fator predominantem para uma gravidez de risco.
 
 9. Como o histórico de urine_test_sugar impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -354,7 +355,7 @@ urine_test_sugar | risk_high | risk_normal
 1                | 0.6662    | 0.3337
 0                | 0.6759    | 0.3240
 
-Podemos avaliar que o histórico de urine_test_sugar não é um fator predominantem para uma gravidez de risco.
+Podemos avaliar que o histórico de açúcar não é um fator predominantem para uma gravidez de risco.
 
 10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -368,7 +369,7 @@ vdrl | risk_high | risk_normal
 1	 | 0.6673	 | 0.3326
 0	 | 0.6673	 | 0.3326
 
-Podemos avaliar que o histórico de vdrl não é um fator predominantem para uma gravidez de risco.
+Podemos avaliar que o histórico de Siflis não é um fator predominantem para uma gravidez de risco.
 
 11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -382,7 +383,7 @@ hrsag | risk_high | risk_normal
 1     | 1	      | 0
 0     | 0.6265    | 0.3734
 
-Podemos avaliar que todas as pacientes que possuem histórico de hrsag é um fator predominantem para uma gravidez de risco, onde 100% dos casos que possuem histórico de hrsag são de gravidez de risco.
+Podemos avaliar que o histórico de Hepatite B pode ser um fator importante para uma gravidez de risco, onde 100% dos casos que possuem histórico de hrsag são de gravidez de risco nessa base.
 
 ## Qualidade dos dados
 
@@ -395,5 +396,6 @@ No entanto, um problema identificado é que a base apresenta uma falta de divers
 ## Autoavalização
 
 A escolha desta base de dados se deu pelo fato de eu estar grávida de gêmeos, o que é considerado uma gravidez de risco. No entanto, infelizmente, não encontrei nenhuma base com informações específicas sobre gravidez gemelar, mas encontrei esta, que achei interessante.
-O meu objetivo principal era identificar quais métricas uma gestante deve monitorar para se preparar adequadamente para uma possível gravidez de risco. Embora uma gravidez de risco habitual possa ser tranquila, é importante destacar que uma gravidez com risco elevado exige uma maior assistência e apoio especializado.
-Acredito que essa base, por si só, não foi suficiente para atingir esse objetivo, principalmente devido à falta de dados mais diversificados, como mencionei anteriormente. Mas atravez dela podemos dizer que 
+O meu objetivo principal era identificar atraves dessa base quais métricas podem ser predominantes em uma gravidez de risco para que as gestantes  monitorem e se prepararem adequadamente para uma possível gravidez de risco. Embora uma gravidez de risco habitual possa ser tranquila, é importante destacar que uma gravidez com risco elevado exige uma maior assistência e apoio especializado.
+Acredito que essa base, por si só, não foi suficiente para atingir esse objetivo, principalmente devido à falta de dados mais diversificados, como mencionei anteriormente. 
+Mas atravez dela podemos dizer que gravidas acima de 31 anos possuem uma maior predisposição para uma gravidez de risco e que a Hepatite B parece ser decisiva para uma gravidez de risco.
