@@ -322,6 +322,8 @@ urine_test_sugar | risk_high | risk_normal
 1                | 0.6662    | 0.3337
 0                | 0.6759    | 0.3240
 
+Podemos avaliar que o histórico de urine_test_sugar não é um fator predominantem para uma gravidez de risco.
+
 10. Como o histórico de vdrl impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
 df_vdrl_risk = df_maternal_health.groupBy("vdrl").agg(
@@ -333,6 +335,8 @@ A tabela gerada foi a seguinte:
 vdrl | risk_high | risk_normal
 1	 | 0.6673	 | 0.3326
 0	 | 0.6673	 | 0.3326
+
+Podemos avaliar que o histórico de vdrl não é um fator predominantem para uma gravidez de risco.
 
 11. Como o histórico de hrsag impacta a probabilidade de uma gravidez ser considerada de alto risco?
 
@@ -346,16 +350,18 @@ hrsag | risk_high | risk_normal
 1     | 1	      | 0
 0     | 0.6265    | 0.3734
 
+Podemos avaliar que todas as pacientes que possuem histórico de hrsag é um fator predominantem para uma gravidez de risco, onde 100% dos casos que possuem histórico de hrsag são de gravidez de risco.
+
 ## Qualidade dos dados
 
 A base de dados escolhida já estava devidamente curada e tratada. Além disso, realizei transformações para eliminar valores nulos e padronizar as informações, garantindo que fosse possível a criação de métricas confiáveis.
 No entanto, um problema identificado é que a base apresenta uma falta de diversidade nos dados. Por exemplo:
 - Nenhuma das pacientes apresenta histórico de pressão alta, o que é amplamente reconhecido na comunidade médica como um fator que aumenta o risco durante a gravidez, especialmente no desenvolvimento de pré-eclâmpsia. Fonte: American Heart Association (AHA) e Organização Mundial da Saúde (OMS).
 - Todas as pacientes estão abaixo do peso.
-- 
+- A maioria dos dados são muito parecidos para pacientes com e sem risco.
 
 ## Autoavalização
 
 A escolha desta base de dados se deu pelo fato de eu estar grávida de gêmeos, o que é considerado uma gravidez de risco. No entanto, infelizmente, não encontrei nenhuma base com informações específicas sobre gravidez gemelar, mas encontrei esta, que achei interessante.
 O meu objetivo principal era identificar quais métricas uma gestante deve monitorar para se preparar adequadamente para uma possível gravidez de risco. Embora uma gravidez de risco habitual possa ser tranquila, é importante destacar que uma gravidez com risco elevado exige uma maior assistência e apoio especializado.
-Acredito que essa base, por si só, não foi suficiente para atingir esse objetivo, principalmente devido à falta de dados mais diversificados, como mencionei anteriormente.
+Acredito que essa base, por si só, não foi suficiente para atingir esse objetivo, principalmente devido à falta de dados mais diversificados, como mencionei anteriormente. Mas atravez dela podemos dizer que 
