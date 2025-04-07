@@ -58,7 +58,7 @@ df_maternal_health = spark.sql("SELECT * FROM spark_catalog.default.maternal_hea
 #### Transformando as colunas
 Essas transformações são necessárias para ser possivel trabalhar métricas com soma, média, entre outras.
 
-* df_maternal_health = df_maternal_health\
+ df_maternal_health = df_maternal_health\
     .withColumn("pregnancy", col("pregnancy").substr(1, 1).cast("int"))\
     .withColumn("weeks", col("weeks").substr(1, 1).cast("int"))\
     .withColumn("weight_kg", regexp_replace(col("weight_kg"), "kg", "").cast("int"))\
