@@ -121,10 +121,14 @@ Essas transformações são necessárias para ser possivel trabalhar métricas c
                 .otherwise("0")
                 .cast("int"))
 
-*Tratamento da blood_pressure 
+Tratamento da blood_pressure 
+
 Baixa (1): Sistólica < 90 ou Diastólica < 60
+
 Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
+
 Alta (3): Sistólica > 120 ou Diastólica > 80
+
 Fonte: American Heart Association (AHA) e da Organização Mundial da Saúde (OMS).
 
 ## Modelagem
