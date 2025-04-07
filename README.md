@@ -129,29 +129,25 @@ Fonte: American Heart Association (AHA) e da Organização Mundial da Saúde (OM
 ## Modelagem
 
 ### Criando os id
-#id_pregnant
 window_spec_fato = Window.orderBy("name")
 df_maternal_health = df_maternal_health\
     .withColumn("id_pregnant", row_number().over(window_spec_fato))
 
-#id_exames
 window_spec_dim_pregnant = Window.orderBy("blood_pressure")
 df_maternal_health = df_maternal_health\
     .withColumn("id_exames", row_number().over(window_spec_dim_pregnant))
 
-#id_baby
 window_spec_dim_exames = Window.orderBy("fetal_position")
 df_maternal_health = df_maternal_health\
     .withColumn("id_baby", row_number().over(window_spec_dim_exames))
 
-#id_pregnancy
 window_spec_dim_baby = Window.orderBy("pregnancy")
 df_maternal_health = df_maternal_health\
     .withColumn("id_pregnancy", row_number().over(window_spec_dim_baby))
 
-###Criando o modelo Estrela
+### Criando o modelo Estrela
 
-####df_fato_maternal_health = df_maternal_health.select("id_pregnant", "id_exames", "id_baby", "id_pregnancy")
+#### df_fato_maternal_health = df_maternal_health.select("id_pregnant", "id_exames", "id_baby", "id_pregnancy")
 
 Descrição das colunas
 id_pregnant : Criada após a classificação da coluna "name"
@@ -159,7 +155,7 @@ id_exames : Criada após a classificação da coluna "blood_pressure"
 id_baby : Criada após a classificação da coluna "fetal_position"
 id_pregnancy : Criada após a classificação da coluna "pregnancy"
 
-####df_dim_pregnant = df_maternal_health.select("id_pregnant", "name", "age", "weight_kg", "height_cm")
+#### df_dim_pregnant = df_maternal_health.select("id_pregnant", "name", "age", "weight_kg", "height_cm")
 
 Descrição das colunas
 id_pregnant : Criada após a classificação da coluna "name"
@@ -168,7 +164,7 @@ age :
 weight_kg : 
 height_cm : 
 
-####df_dim_exames = df_maternal_health.select("id_exames", "blood_pressure", "anemia", "jaundice", "urine_test_albumin", "urine_test_sugar", "vdrl", "hrsag")
+#### df_dim_exames = df_maternal_health.select("id_exames", "blood_pressure", "anemia", "jaundice", "urine_test_albumin", "urine_test_sugar", "vdrl", "hrsag")
 
 Descrição das colunas
 id_exames : Criada após a classificação da coluna "blood_pressure" 
@@ -180,7 +176,7 @@ urine_test_sugar :
 vdrl : 
 hrsag : 
 
-####df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_movements", "fetal_heartbeat")
+#### df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_movements", "fetal_heartbeat")
 
 Descrição das colunas
 id_baby : Criada após a classificação da coluna "fetal_position"
@@ -188,7 +184,7 @@ fetal_position :
 fetal_movements : 
 fetal_heartbeat : 
 
-####df_dim_pregnancy = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
+#### df_dim_pregnancy = df_maternal_health.select("id_pregnancy", "pregnancy", "weeks", "high_risk_pregnancy")
 
 Descrição das colunas
 id_pregnancy : Criada após a classificação da coluna "pregnancy"
