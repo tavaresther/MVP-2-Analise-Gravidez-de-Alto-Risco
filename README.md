@@ -123,9 +123,9 @@ Essas transformações são necessárias para ser possivel trabalhar métricas c
 
 Tratamento da blood_pressure 
 
-Baixa (1): Sistólica < 90 ou Diastólica < 60
-Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
-Alta (3): Sistólica > 120 ou Diastólica > 80
+* Baixa (1): Sistólica < 90 ou Diastólica < 60
+* Normal (2): Sistólica entre 90 e 120 e Diastólica entre 60 e 80
+* Alta (3): Sistólica > 120 ou Diastólica > 80
 Fonte: American Heart Association (AHA) e da Organização Mundial da Saúde (OMS).
 
 ## Modelagem
@@ -152,31 +152,31 @@ df_maternal_health = df_maternal_health\
 #### df_fato_maternal_health = df_maternal_health.select("id_pregnant", "id_exames", "id_baby", "id_pregnancy")
 
 Descrição das colunas
-id_pregnant : Criada após a classificação da coluna "name"
-id_exames : Criada após a classificação da coluna "blood_pressure" 
-id_baby : Criada após a classificação da coluna "fetal_position"
-id_pregnancy : Criada após a classificação da coluna "pregnancy"
+* id_pregnant : Criada após a classificação da coluna "name"
+* id_exames : Criada após a classificação da coluna "blood_pressure" 
+* id_baby : Criada após a classificação da coluna "fetal_position"
+* id_pregnancy : Criada após a classificação da coluna "pregnancy"
 
 #### df_dim_pregnant = df_maternal_health.select("id_pregnant", "name", "age", "weight_kg", "height_cm")
 
 Descrição das colunas
-id_pregnant : Criada após a classificação da coluna "name"
-name : 
-age : 
-weight_kg : 
-height_cm : 
+* id_pregnant : Criada após a classificação da coluna "name", inteiro, sem valores mínimos esperados;
+* name : Nome da pasciente, string, sem valores mínimos esperados;
+* age : Idade da pasciente, inteiro, sem valores mínimos esperados;
+* weight_kg : Peso da pasciente em kg, inteiro, sem valores mínimos esperados;
+* height_cm : Altura da pasciente em cm, inteiro, sem valores mínimos esperados;
 
 #### df_dim_exames = df_maternal_health.select("id_exames", "blood_pressure", "anemia", "jaundice", "urine_test_albumin", "urine_test_sugar", "vdrl", "hrsag")
 
 Descrição das colunas
-id_exames : Criada após a classificação da coluna "blood_pressure" 
-blood_pressure : 
-anemia : 
-jaundice : 
-urine_test_albumin : 
-urine_test_sugar : 
-vdrl : 
-hrsag : 
+id_exames : Criada após a classificação da coluna "blood_pressure";
+blood_pressure : Classificação do tipo de pressão da pasciente, inteiro, valores esperados sendo para: Baixa - 1, Normal - 2, Alta - 3;
+anemia : Classificação se a pasciente possui anemia, inteiro, valores esperados sendo para: Normal - 0, Minimal - 1, Medium - 2, Higher - 3;
+jaundice : Classificação se a pasciente possui jaundice, inteiro, valores esperados sendo para: Normal - 0, Minimal - 1, Medium - 2, Higher - 3;
+urine_test_albumin : Classificação se a pasciente possui albumina na urina, inteiro, valores esperados sendo para: Normal - 0, Minimal - 1, Medium - 2, Higher - 3;
+urine_test_sugar : Classificação se a pasciente possui açúcar na urina, inteiro, valores esperados sendo para: Não - 0, Sim - 1;
+vdrl : Classificação se a pasciente possui vdrl, inteiro, valores esperados sendo para: Negativo - 0, Positivo - 1;
+hrsag : Classificação se a pasciente possui hrsag, inteiro, valores esperados sendo para: Negativo - 0, Positivo - 1; 
 
 #### df_dim_baby = df_maternal_health.select("id_baby", "fetal_position", "fetal_movements", "fetal_heartbeat")
 
@@ -251,8 +251,7 @@ df_imc_risk = df_maternal_health\
 
 df_imc_risk = df_imc_risk.groupBy("class_imc").agg(
     avg(when(col("high_risk_pregnancy") == 1, 1).otherwise(0)).alias("risk_high"),
-    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal")
-)
+    avg(when(col("high_risk_pregnancy") == 0, 1).otherwise(0)).alias("risk_normal"))
 
 A tabela gerada foi a seguinte:
 
