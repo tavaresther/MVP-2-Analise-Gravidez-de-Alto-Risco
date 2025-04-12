@@ -2,7 +2,7 @@
 
 ## Objetivo da Analise
 
-Identificar atraves do dataset maternal_health quais são os principais fatores que estão relacionados a uma grávidez de alto risco, utilizando para embasamento as seguintes perguntas de negócio:
+Identificar atraves do dataset Maternal Health Risk Data para identificar os principais fatores associados a uma gravidez de alto risco. Essa análise será guiada por perguntas de negócio específicas, com o objetivo de fornecer insights que possam contribuir para a prevenção e o monitoramento eficaz de casos de risco durante a gestação.
 
 1. A idade está relacionada a gestações de alto risco?
 2. A quantidade de vezes que a paciente ficou grávida está relacionada a gestações de alto risco?
